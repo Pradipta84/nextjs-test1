@@ -8,6 +8,8 @@ const nextConfig = {
     // Allow production builds to succeed even if there are type errors
     ignoreBuildErrors: true,
   },
+  // Silence monorepo/workspace root inference warning by explicitly setting the tracing root
+  outputFileTracingRoot: __dirname,
 };
 
 export default nextConfig;
