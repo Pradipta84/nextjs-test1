@@ -8,22 +8,6 @@
   --border: #e5e5e5;
 }
 
-/* Respect device dark mode when no explicit theme is set */
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme]) {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --muted: #101010;
-    --muted-foreground: #b3b3b3;
-    --border: #2a2a2a;
-    color-scheme: dark;
-  }
-  html:not([data-theme]) h1,
-  html:not([data-theme]) h2,
-  html:not([data-theme]) h3 { color: color-mix(in oklab, var(--foreground) 98%, transparent); }
-  html:not([data-theme]) p { color: #ffffff; }
-}
-
 /* Map CSS variables to utility classes to avoid using @theme */
 .bg-foreground {
   background-color: var(--foreground);
@@ -51,37 +35,20 @@ html[data-theme="light"] {
   color-scheme: light;
 }
 
-html[data-theme="dark"],
-html.dark {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  --muted: #101010;
-  --muted-foreground: #b3b3b3;
-  --border: #2a2a2a;
-  color-scheme: dark;
-}
+/* Dark theme disabled - force light theme only */
 
 /* Headings and paragraph defaults tuned per theme */
 html[data-theme="light"] h1,
 html[data-theme="light"] h2,
 html[data-theme="light"] h3 { color: color-mix(in oklab, var(--foreground) 96%, transparent); }
-html[data-theme="dark"] h1,
-html[data-theme="dark"] h2,
-html[data-theme="dark"] h3,
-html.dark h1,
-html.dark h2,
-html.dark h3 { color: color-mix(in oklab, var(--foreground) 98%, transparent); }
+/* Dark theme headings disabled */
 
 /* Paragraph default colors per theme — strong contrast */
 html[data-theme="light"] p {
   color: #000000;
   text-shadow: none;
 }
-html[data-theme="dark"] p,
-html.dark p {
-  color: #ffffff;
-  text-shadow: none;
-}
+/* Dark theme paragraphs disabled */
 
 /* Home page paragraphs inherit global paragraph colors */
 /* (no overrides needed) */
@@ -91,12 +58,7 @@ html.dark p {
 .get-started .text-muted-foreground {
   color: color-mix(in oklab, var(--foreground) 92%, transparent);
 }
-html.dark .get-started :where(p, li, summary, small),
-html[data-theme="dark"] .get-started :where(p, li, summary, small),
-html.dark .get-started .text-muted-foreground,
-html[data-theme="dark"] .get-started .text-muted-foreground {
-  color: color-mix(in oklab, var(--foreground) 96%, transparent);
-}
+/* Dark theme get-started styles disabled */
 
 /* Ensure high-contrast text inside foreground cards on Get Started */
 .get-started .bg-foreground,
@@ -115,22 +77,14 @@ html[data-theme="dark"] .get-started .text-muted-foreground {
 .get-started .bg-foreground .text-muted-foreground {
   color: color-mix(in oklab, var(--background) 92%, transparent);
 }
-html.dark .get-started .bg-foreground .text-muted-foreground,
-html[data-theme="dark"] .get-started .bg-foreground .text-muted-foreground {
-  color: color-mix(in oklab, var(--background) 96%, transparent);
-}
+/* Dark theme bg-foreground styles disabled */
 
 /* Ensure readable text on muted backgrounds in Get Started */
 .get-started .bg-muted :where(p, li, small, summary),
 .get-started .bg-muted .text-muted-foreground {
   color: color-mix(in oklab, var(--foreground) 88%, transparent);
 }
-html.dark .get-started .bg-muted :where(p, li, small, summary),
-html[data-theme="dark"] .get-started .bg-muted :where(p, li, small, summary),
-html.dark .get-started .bg-muted .text-muted-foreground,
-html[data-theme="dark"] .get-started .bg-muted .text-muted-foreground {
-  color: color-mix(in oklab, var(--foreground) 92%, transparent);
-}
+/* Dark theme bg-muted styles disabled */
 
 body {
   background: transparent;
@@ -143,12 +97,6 @@ html {
   scroll-behavior: smooth;
   background: linear-gradient(180deg, #E024DC, #2F7C8A);
   background-attachment: fixed;
-}
-/* Ensure gradient is still visible in dark mode while text remains readable */
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme]) {
-    background: linear-gradient(180deg, #0d0d0e, #1f2a30);
-  }
 }
 
 /* Prevent horizontal scrolling and ensure full height */
@@ -182,11 +130,7 @@ html, body {
   -webkit-backdrop-filter: saturate(140%) blur(6px);
   backdrop-filter: saturate(140%) blur(6px);
 }
-html.dark .home h1.gradient-text,
-html[data-theme="dark"] .home h1.gradient-text {
-  background-color: rgba(255, 255, 255, 0.815);
-  border-color: rgba(255, 255, 255, 0.16);
-}
+/* Dark theme gradient text disabled */
 
 /* Badges */
 .badge {
