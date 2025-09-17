@@ -8,6 +8,22 @@
   --border: #e5e5e5;
 }
 
+/* Respect device dark mode when no explicit theme is set */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --muted: #101010;
+    --muted-foreground: #b3b3b3;
+    --border: #2a2a2a;
+    color-scheme: dark;
+  }
+  html:not([data-theme]) h1,
+  html:not([data-theme]) h2,
+  html:not([data-theme]) h3 { color: color-mix(in oklab, var(--foreground) 98%, transparent); }
+  html:not([data-theme]) p { color: #ffffff; }
+}
+
 /* Map CSS variables to utility classes to avoid using @theme */
 .bg-foreground {
   background-color: var(--foreground);
@@ -127,6 +143,12 @@ html {
   scroll-behavior: smooth;
   background: linear-gradient(180deg, #E024DC, #2F7C8A);
   background-attachment: fixed;
+}
+/* Ensure gradient is still visible in dark mode while text remains readable */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) {
+    background: linear-gradient(180deg, #0d0d0e, #1f2a30);
+  }
 }
 
 /* Prevent horizontal scrolling and ensure full height */
